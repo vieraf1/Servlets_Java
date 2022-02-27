@@ -8,20 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/oi")
-public class HelloWorldServlet extends HttpServlet{
+@WebServlet("/novaEmpresa")
+public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		PrintWriter out = resp.getWriter();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Testando novaEmpresa");
+		
+		String nome = request.getParameter("nome");
+		
+		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println(" <body>");
-		out.println("  Hello Word!");
+		out.println("  Empresa " + nome + " cadastrada com sucesso!");
 		out.println(" </body>");
 		out.println("</html>");
-		
-		System.out.println("o servlet oi foi chamado!");
 	}
-	
+
 }

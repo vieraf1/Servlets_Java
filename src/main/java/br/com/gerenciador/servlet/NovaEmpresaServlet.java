@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.gerenciador.domain.Empresa;
+
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +19,10 @@ public class NovaEmpresaServlet extends HttpServlet {
 		System.out.println("Testando novaEmpresa");
 		
 		String nome = request.getParameter("nome");
+		Empresa empresa = new Empresa(null, nome);
+		
+		Banco banco = new Banco();
+		banco.adicionar(empresa);
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html>");

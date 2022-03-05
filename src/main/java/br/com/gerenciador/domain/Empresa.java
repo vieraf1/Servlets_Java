@@ -1,13 +1,21 @@
 package br.com.gerenciador.domain;
 
+import java.util.Date;
+
 public class Empresa {
 	
 	private Integer id;
 	private String nome;
+	private Date dataAbertura = new Date();
 	
 	public Empresa(Integer id, String nome) {
+		this(id, nome, new Date());
+	}
+	
+	public Empresa(Integer id, String nome, Date dataAbertura) {
 		this.id = id;
 		this.nome = nome;
+		this.dataAbertura = dataAbertura;
 	}
 
 	public Integer getId() {
@@ -25,5 +33,15 @@ public class Empresa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Date getDataAbertura() {
+		return dataAbertura;
+	}
+
+	public void setDataAbertura(Date dataAbertura) {
+		this.dataAbertura = dataAbertura;
+	}
+	
+	
 
 }

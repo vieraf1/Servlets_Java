@@ -17,7 +17,7 @@ import br.com.gerenciador.domain.Empresa;
 public class ListaEmpresasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		System.out.println("acessando servlet listarEmpresas");
 		
 		Banco banco = new Banco();

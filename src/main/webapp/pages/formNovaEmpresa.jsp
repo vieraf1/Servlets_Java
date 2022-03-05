@@ -10,6 +10,8 @@
 		<form action="${servlet}" method="post">
 			
 			Nome: <input type="text" name="nome"/>
+			<br/>
+			Data de Abertura: <input type="text" name="data"/>
 			
 			<input type="submit"/>
 		</form>

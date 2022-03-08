@@ -20,8 +20,6 @@ public class HelloWorldServlet extends HttpServlet{
 		out.println("  Hello Word!");
 		out.println(" </body>");
 		out.println("</html>");
-		
-		System.out.println("o servlet oi foi chamado!");
 	}
 	
 }

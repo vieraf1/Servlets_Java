@@ -18,8 +18,6 @@ public class ListaEmpresasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		System.out.println("acessando servlet listarEmpresas");
-		
 		Banco banco = new Banco();
 		List<Empresa> empresas = banco.getEmpresas();
 		

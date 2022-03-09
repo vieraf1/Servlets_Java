@@ -41,5 +41,14 @@ public class Banco {
 			empresas.remove(emp);
 		}
 	}
+	
+	public Empresa getEmpresaById(Integer id) {
+		for(Empresa empresa : empresas) {
+			if(empresa.getId().equals(id)) {
+				return empresa;
+			}
+		}
+		return null;
+	}
 
 }

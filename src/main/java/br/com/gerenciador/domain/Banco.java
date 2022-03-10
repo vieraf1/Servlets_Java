@@ -1,9 +1,7 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import br.com.gerenciador.domain.Empresa;
 
 public class Banco {
 

@@ -13,6 +13,7 @@ import br.com.gerenciador.acao.AlteraEmpresa;
 import br.com.gerenciador.acao.ListaEmpresas;
 import br.com.gerenciador.acao.MostraEmpresa;
 import br.com.gerenciador.acao.NovaEmpresa;
+import br.com.gerenciador.acao.NovaEmpresaForm;
 import br.com.gerenciador.acao.RemoveEmpresa;
 
 @WebServlet("/entrada")
@@ -50,8 +51,13 @@ public class UnicaEntradaServlet extends HttpServlet {
     		nome = novaEmpresa.executa(req, resp);
     	}
     	
+    	if(acao.equals("novaEmpresaForm")) {
+    		NovaEmpresaForm novaEmpresaForm = new NovaEmpresaForm();
+    		nome = novaEmpresaForm.executa(req, resp);
+    	}
+    	
     	if(nome.contains("forward:")) {
-    		RequestDispatcher rd = req.getRequestDispatcher(nome.replace("forward:", ""));
+    		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF" + nome.replace("forward:", ""));
     		rd.forward(req, resp);
     	} else {
     		resp.sendRedirect(nome.replace("redirect:", ""));

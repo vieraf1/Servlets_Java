@@ -2,6 +2,7 @@ package br.com.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,30 +23,38 @@ public class UnicaEntradaServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
     	String acao = req.getParameter("acao");
+    	String nome = "";
     	
     	if(acao.equals("listarEmpresas")) {
     		ListaEmpresas listaEmpresas = new ListaEmpresas();
-    		listaEmpresas.executa(req, resp);
+    		nome = listaEmpresas.executa(req, resp);
     	}
     	
     	if(acao.equals("removeEmpresa")) {
     		RemoveEmpresa removeEmpresa = new RemoveEmpresa();
-    		removeEmpresa.executa(req, resp);
+    		nome = removeEmpresa.executa(req, resp);
     	}
     	
     	if(acao.equals("mostraEmpresa")) {
     		MostraEmpresa mostraEmpresa = new MostraEmpresa();
-    		mostraEmpresa.executa(req, resp);
+    		nome = mostraEmpresa.executa(req, resp);
     	}
     	
     	if(acao.equals("alteraEmpresa")) {
     		AlteraEmpresa alteraEmpresa = new AlteraEmpresa();
-    		alteraEmpresa.executa(req, resp);
+    		nome = alteraEmpresa.executa(req, resp);
     	}
     	
     	if(acao.equals("novaEmpresa")) {
     		NovaEmpresa novaEmpresa = new NovaEmpresa();
-    		novaEmpresa.executa(req, resp);
+    		nome = novaEmpresa.executa(req, resp);
+    	}
+    	
+    	if(nome.contains("forward:")) {
+    		RequestDispatcher rd = req.getRequestDispatcher(nome.replace("forward:", ""));
+    		rd.forward(req, resp);
+    	} else {
+    		resp.sendRedirect(nome.replace("redirect:", ""));
     	}
     }
 

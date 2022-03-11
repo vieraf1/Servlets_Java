@@ -14,7 +14,7 @@ import br.com.gerenciador.domain.Empresa;
 
 public class AlteraEmpresa {
 	
-	public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Banco banco = new Banco();
 		
 		Integer id = Integer.valueOf(req.getParameter("id"));
@@ -33,7 +33,7 @@ public class AlteraEmpresa {
 		emp.setNome(nome);
 		emp.setDataAbertura(dataAbertura);
 		
-		resp.sendRedirect("entrada?acao=listarEmpresas");
+		return "redirect:entrada?acao=listarEmpresas";
 	}
 
 }

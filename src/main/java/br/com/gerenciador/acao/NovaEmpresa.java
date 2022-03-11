@@ -14,7 +14,7 @@ import br.com.gerenciador.domain.Empresa;
 
 public class NovaEmpresa {
 
-	public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
 		String dataAberturaParametro = req.getParameter("data");
 		
@@ -31,7 +31,7 @@ public class NovaEmpresa {
 		Banco banco = new Banco();
 		banco.adicionar(empresa);
 		
-		resp.sendRedirect("entrada?acao=listarEmpresas");
+		return "redirect:entrada?acao=listarEmpresas";
 	}
 	
 }

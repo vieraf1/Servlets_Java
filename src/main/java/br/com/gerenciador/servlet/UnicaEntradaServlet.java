@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.gerenciador.acao.AlteraEmpresa;
 import br.com.gerenciador.acao.ListaEmpresas;
+import br.com.gerenciador.acao.MostraEmpresa;
+import br.com.gerenciador.acao.NovaEmpresa;
+import br.com.gerenciador.acao.RemoveEmpresa;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
@@ -20,22 +24,28 @@ public class UnicaEntradaServlet extends HttpServlet {
     	String acao = req.getParameter("acao");
     	
     	if(acao.equals("listarEmpresas")) {
-    		System.out.println("listando empresas");
-    		
     		ListaEmpresas listaEmpresas = new ListaEmpresas();
     		listaEmpresas.executa(req, resp);
     	}
     	
-    	if(acao.equals("removeEmpresas")) {
-    		System.out.println("remove empresa");
+    	if(acao.equals("removeEmpresa")) {
+    		RemoveEmpresa removeEmpresa = new RemoveEmpresa();
+    		removeEmpresa.executa(req, resp);
     	}
     	
-    	if(acao.equals("novaEmpresas")) {
-    		System.out.println("nova empresa");
+    	if(acao.equals("mostraEmpresa")) {
+    		MostraEmpresa mostraEmpresa = new MostraEmpresa();
+    		mostraEmpresa.executa(req, resp);
     	}
     	
-    	if(acao.equals("alteraEmpresas")) {
-    		System.out.println("altera empresa");
+    	if(acao.equals("alteraEmpresa")) {
+    		AlteraEmpresa alteraEmpresa = new AlteraEmpresa();
+    		alteraEmpresa.executa(req, resp);
+    	}
+    	
+    	if(acao.equals("novaEmpresa")) {
+    		NovaEmpresa novaEmpresa = new NovaEmpresa();
+    		novaEmpresa.executa(req, resp);
     	}
     }
 

@@ -1,4 +1,4 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.acao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -6,22 +6,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.domain.Banco;
 import br.com.gerenciador.domain.Empresa;
 
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class NovaEmpresa {
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String nome = request.getParameter("nome");
-		String dataAberturaParametro = request.getParameter("data");
+	public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String nome = req.getParameter("nome");
+		String dataAberturaParametro = req.getParameter("data");
 		
 		SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataAbertura;
@@ -36,7 +31,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adicionar(empresa);
 		
-		response.sendRedirect("listarEmpresas");
+		resp.sendRedirect("entrada?acao=listarEmpresas");
 	}
-
+	
 }

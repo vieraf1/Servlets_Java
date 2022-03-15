@@ -8,15 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.domain.Banco;
 
-public class RemoveEmpresa {
+public class RemoveEmpresa implements Acao {
 	
+	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Banco banco = new Banco();
 		Integer id = Integer.valueOf(req.getParameter("id"));
 		
 		banco.removerById(id);
 		
-		return "redirect:entrada?acao=listarEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 
 }

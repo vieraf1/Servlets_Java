@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.gerenciador.domain.Banco;
 import br.com.gerenciador.domain.Empresa;
 
-public class MostraEmpresa {
+public class MostraEmpresa implements Acao {
 	
+	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Banco banco = new Banco();
 		Integer id = Integer.valueOf(req.getParameter("id"));

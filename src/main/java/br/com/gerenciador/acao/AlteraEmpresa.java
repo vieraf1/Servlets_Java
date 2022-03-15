@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.gerenciador.domain.Banco;
 import br.com.gerenciador.domain.Empresa;
 
-public class AlteraEmpresa {
+public class AlteraEmpresa implements Acao {
 	
+	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Banco banco = new Banco();
 		
@@ -33,7 +34,7 @@ public class AlteraEmpresa {
 		emp.setNome(nome);
 		emp.setDataAbertura(dataAbertura);
 		
-		return "redirect:entrada?acao=listarEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 
 }

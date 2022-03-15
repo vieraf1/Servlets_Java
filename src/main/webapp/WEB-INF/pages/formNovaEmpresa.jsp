@@ -12,7 +12,7 @@
 			Nome: <input type="text" name="nome"/>
 			<br/>
 			Data de Abertura: <input type="text" name="data"/>
-			<input type="hidden" name="acao" value="novaEmpresa"/>
+			<input type="hidden" name="acao" value="NovaEmpresa"/>
 			<input type="submit"/>
 		</form>
 	</body>

@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.gerenciador.domain.Banco;
 import br.com.gerenciador.domain.Empresa;
 
-public class ListaEmpresas {
+public class ListaEmpresas implements Acao {
 
+		@Override
 		public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			Banco banco = new Banco();
 			List<Empresa> empresas = banco.getEmpresas();

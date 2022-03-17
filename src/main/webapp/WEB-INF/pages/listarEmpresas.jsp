@@ -9,6 +9,12 @@
 		<title>Gerenciador de Empresa</title>
 	</head>
 	<body>
+		<c:if test="${not empty usuarioLogado.login}">
+			Usuario Logado: ${usuarioLogado.login}
+			<br/>
+			<br/>
+		</c:if>
+	
 		<c:if test="${not empty nomeEmpresa}">
 			Empresa ${nomeEmpresa} cadastrada com sucesso!
 			<br/>

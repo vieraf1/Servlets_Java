@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerenciador.acao.Acao;
 
@@ -17,8 +18,16 @@ public class UnicaEntradaServlet extends HttpServlet {
        
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
     	String paramAcao = req.getParameter("acao");
+    	HttpSession sessao = req.getSession();
+    	boolean usuarioNaoAutenticado = (sessao.getAttribute("usuarioLogado") == null);
+		boolean eAcaoLogin = paramAcao.equals("LoginForm") || paramAcao.equals("Login");
+    	
+    	if(!eAcaoLogin && usuarioNaoAutenticado) {
+			resp.sendRedirect("entrada?acao=LoginForm");
+			return;
+		}
+    	
     	String nomeClasse = "br.com.gerenciador.acao." + paramAcao;
     	String nome;
     	try {

@@ -8,6 +8,8 @@
  		<title>Cadastro de empresas</title>
 	</head>
 	<body>
+		<c:import url="logout_parcial.jsp"/>
+	
 		<form action="${servlet}" method="post">
 			
 			Nome: <input type="text" name="nome" value="${empresa.nome}"/>

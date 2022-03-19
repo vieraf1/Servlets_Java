@@ -9,6 +9,8 @@
 		<title>Gerenciador de Empresa</title>
 	</head>
 	<body>
+		<c:import url="logout_parcial.jsp"/>
+
 		<c:if test="${not empty usuarioLogado.login}">
 			Usuario Logado: ${usuarioLogado.login}
 			<br/>

@@ -19,6 +19,7 @@ public class UnicaEntradaServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String paramAcao = req.getParameter("acao");
+    	
     	HttpSession sessao = req.getSession();
     	boolean usuarioNaoAutenticado = (sessao.getAttribute("usuarioLogado") == null);
 		boolean eAcaoLogin = paramAcao.equals("LoginForm") || paramAcao.equals("Login");

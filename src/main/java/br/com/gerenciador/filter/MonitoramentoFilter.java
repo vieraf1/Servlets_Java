@@ -15,13 +15,13 @@ public class MonitoramentoFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		
+		String paramAcao = req.getParameter("acao");
 		long antes = System.currentTimeMillis();
 		
 		chain.doFilter(req, resp);
 		
 		long depois = System.currentTimeMillis();
-		System.out.println("duração: " + (depois - antes));
+		System.out.println("duração do " + paramAcao + ": " + (depois - antes));
 	}
 	
 }

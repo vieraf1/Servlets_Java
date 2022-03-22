@@ -1,23 +1,27 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.filter;
 
 import java.io.IOException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.acao.Acao;
 
-//@WebServlet("/entrada")
-public class UnicaEntradaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	String paramAcao = req.getParameter("acao");
+//@WebFilter("/entrada")
+public class ControladorFilter implements Filter {
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletResponse resp = (HttpServletResponse)response;
+		
+		String paramAcao = req.getParameter("acao");
     	
     	String nomeClasse = "br.com.gerenciador.acao." + paramAcao;
     	String nome;
@@ -35,6 +39,6 @@ public class UnicaEntradaServlet extends HttpServlet {
     	} else {
     		resp.sendRedirect(nome.replace("redirect:", ""));
     	}
-    }
+	}
 
 }

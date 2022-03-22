@@ -7,14 +7,14 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/entrada")
+//@WebFilter("/entrada")
 public class MonitoramentoFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
+		
 		String paramAcao = req.getParameter("acao");
 		long antes = System.currentTimeMillis();
 		
